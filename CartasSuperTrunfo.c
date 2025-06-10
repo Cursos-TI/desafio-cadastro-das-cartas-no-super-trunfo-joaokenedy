@@ -4,8 +4,11 @@ int main()
     //declarando as variaveis
     char estado1, estado2 ;
     char carta1[10], carta2[10], cidade1[30], cidade2[30];
-    int populacao1, populacao2, pturistico1, pturistico2;
+    unsigned long int populacao1, populacao2;
+    int pturistico1, pturistico2;
+    int Respopulacao, Resturistico, Respib, Resarea, Resdensidade, Respibpercapita, Respoder;
     float pib1, pib2, area1, area2, densidade1, densidade2, pibpercapita1, pibpercapita2;
+    float superpd1, superpd2;
     //coletando os dados da primeira carta
     printf("Bem vido ao jogo Super trunfo!!\n Vamos Começar inserindo os dados da primeira carta!! \n");
     printf(" Digite uma letra entre 'A' a 'H' que identifica o Estado! \n");
@@ -31,6 +34,7 @@ int main()
     //calculando a densidade
     densidade1 = (float)(populacao1/area1);
     pibpercapita1 = (float)(pib1/populacao1);
+    superpd1 = (populacao1+pturistico1+pib1+area1+pibpercapita1+(1/densidade1));
     
     // exibindo a carta 1
     printf("Dados das cartas: \n");
@@ -39,11 +43,12 @@ int main()
     printf("Codigo: %s \n", carta1 );
     printf("Cidade: %s \n", cidade1 );
     printf("Populacao: %d Habitantes \n", populacao1 );
-    printf("PIB: R$ %.2f  Reais \n", pib1 );
+    printf("PIB: R$ %.2f  Reais \n", pib1);
     printf("Area: %.2f Km² \n", area1 );
-    printf("Numeros de Pontos Turisticos: %d \n", pturistico1 );
-    printf("Densidade populacional: %.2f Km² \n", densidade1 );
-    printf("Pib Per capita: R$ %.2f Reais \n", pibpercapita1 );
+    printf("Numeros de Pontos Turisticos: %d \n", pturistico1);
+    printf("Densidade populacional: %.2f hab/Km² \n", densidade1);
+    printf("Pib Per capita: R$ %.2f Reais \n", pibpercapita1);
+    printf("Super poder igual a '%.2f' \n", superpd1);
 
     //coletando os dados da Segunda carta
     printf("Agora vamos inserir os dados da segunda carta!! \n");
@@ -70,6 +75,7 @@ int main()
     //calculando a densidade
     densidade2 = (float)(populacao2/area2);
     pibpercapita2 = (float)(pib2/populacao2);
+    superpd2 = (populacao2+pturistico2+pib2+area2+pibpercapita2+(1/densidade2));
     
     // exibindo a carta
     printf("Dados das cartas: \n");
@@ -81,11 +87,34 @@ int main()
     printf("PIB: R$ %.2f  Reais \n", pib2 );
     printf("Area: %.2f Km² \n", area2 );
     printf("Numeros de Pontos Turisticos: %d \n", pturistico2 );
-    printf("Densidade populacional: %.2f Km² \n", densidade2 );
+    printf("Densidade populacional: %.2f hab/Km² \n", densidade2 );
     printf("Pib Per capita: R$ %.2f Reais \n", pibpercapita2 );
+    printf("Super poder igual a '%.2f' \n", superpd2);
 
-    
+    //comparando as cartas
+    Respopulacao = populacao1 > populacao2;
+    Resturistico = pturistico1 > pturistico2;
+    Respib = pib1 > pib2;
+    Resarea = area1 > area2;
+    Resdensidade = densidade1 < densidade2;
+    Respibpercapita = pibpercapita1 > pibpercapita2;
+    Respoder = superpd1 > superpd2;
+
+     //Exibindo resultado da comparção
+     printf("***Resultado das Comparações das cartas*** : \n");
+     printf("População '%d' \n", Respopulacao);
+     printf("Area '%d' \n", Resarea);
+     printf("PIB '%d' \n", Respib);
+     printf("Pontos turisticos  '%d' \n", Resturistico);
+     printf("Densidade '%d' \n", Resdensidade);
+     printf("PIB Per Capita '%d' \n", Respibpercapita);
+     printf("Super Poder '%d' \n", Respoder);
+
+
+
+
 
     
     return 0;
 }
+
